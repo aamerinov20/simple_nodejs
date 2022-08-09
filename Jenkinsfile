@@ -2,21 +2,20 @@ pipeline {
     agent any
 
     stages {
-        stage('1-Build') {
+        stage('Clone Repo') {
             steps {
                 git branch: 'main', url: 'https://github.com/aamerinov20/simple_nodejs.git'
             }
         }
-        stage('2-Test') {
+        stage('Build Image') {
             steps {
-                sh 'mkdir testfolderr122222'
+                sh 'docker build . -t web_alisher'
             }
         }
-        stage('3-Deploy') {
+        stage('Deploy container') {
             steps {
-                echo "Start of Stage Deploy"
-                echo "Deploying......."
-                echo "End of Stage Build"
+                
+
             }
         }
     }

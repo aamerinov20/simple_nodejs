@@ -1,6 +1,6 @@
 version: "3"
 services:
     web-server:
-       image: web_alisher:latest
+       image: aamerinov20/web_alisher:latest
        ports:
          - "80:3000"

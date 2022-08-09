@@ -8,6 +8,16 @@ pipeline{
 
 	stages {
 	    
+        	    stage('install tools') {
+
+			steps {
+				apt update -y 
+                apt install docker.io -y
+                apt install git -y
+			}
+		}
+
+
 	    stage('gitclone') {
 
 			steps {

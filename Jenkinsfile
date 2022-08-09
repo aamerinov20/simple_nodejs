@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub_cred')
-        REGISTRYHUB           = aamerinov20/web_alisher
+        REGISTRYHUB           = 'aamerinov20/web_alisher'
     }
 
     stages {

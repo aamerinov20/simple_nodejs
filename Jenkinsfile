@@ -1,51 +1,26 @@
-pipeline{
+pipeline {
+    agent any
 
-	agent { 
-        label 'master'
+    stages {
+        stage('1-Build') {
+            steps {
+                mkdir test_folderrrrr
+
+            }
+        }
+        stage('2-Test') {
+            steps {
+                echo "Start of Stage Test"
+                echo "Testing......."
+                echo "End of Stage Build"
+            }
+        }
+        stage('3-Deploy') {
+            steps {
+                echo "Start of Stage Deploy"
+                echo "Deploying......."
+                echo "End of Stage Build"
+            }
+        }
     }
-	environment {
-		DOCKERHUB_CREDENTIALS=credentials('dockerHub')
-	}
-
-	stages {
-	    
-        	stage('install tools') {
-
-			steps {
-                echo "hello"
-                echo "goodbye"
-			}
-		}
-
-
-	    stage('gitclone') {
-
-			steps {
-				git 'https://github.com/aamerinov20/simple_nodejs.git'
-			}
-		}
-
-		stage('Build') {
-
-			steps {
-				sh 'docker build -t web_alisher:latest .'
-			}
-		}
-
-		stage('Login') {
-
-			steps {
-				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			}
-		}
-
-		stage('Push') {
-
-			steps {
-				sh 'docker push web_alisher:latest'
-			}
-		}
-	}
-
-
 }

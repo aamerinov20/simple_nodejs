@@ -9,7 +9,7 @@ pipeline {
         }
         stage('2-Test') {
             steps {
-                mkdir(dir:"testfolder123333")
+                sh 'mkdir testfolderr122222'
             }
         }
         stage('3-Deploy') {

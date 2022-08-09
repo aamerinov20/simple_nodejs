@@ -11,7 +11,7 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				git 'https://github.com/aamerinov20/simple_nodejs.git'
+				sh 'git clone https://github.com/aamerinov20/simple_nodejs.git'
 			}
 		}
 

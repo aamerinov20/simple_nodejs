@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('1-Build') {
             steps {
-                git branch: 'main', url: 'https://github.com/aamerinov20/simple_nodejs.git'
+                git clone branch: 'main', url: 'https://github.com/aamerinov20/simple_nodejs.git'
             }
         }
         stage('2-Test') {

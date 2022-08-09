@@ -1,7 +1,10 @@
 pipeline{
 
-	agent { docker 'ubuntu:latest' }
-
+	agent { 
+        docker {
+            image: 'ubuntu:latest' 
+        }
+    }
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerHub')
 	}

@@ -9,12 +9,12 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'sudo docker build . -t web_alisher'
+                sh 'docker build . -t web_alisher'
             }
         }
         stage('Deploy container') {
             steps {
-                sh 'sudo docker compose up -d'
+                sh 'docker compose up -d'
             }
         }
     }

@@ -9,9 +9,7 @@ pipeline {
         }
         stage('2-Test') {
             steps {
-                echo "Start of Stage Test"
-                echo "Testing......."
-                echo "End of Stage Build"
+                mkdir(dir:"testfolder123333")
             }
         }
         stage('3-Deploy') {

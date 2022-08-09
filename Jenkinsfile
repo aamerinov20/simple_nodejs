@@ -1,11 +1,41 @@
-node {
-    checkout scm
+pipeline{
 
-    docker.withRegistry('https://registry.hub.docker.com', 'dockerHub') {
+	agent any
 
-        def customImage = docker.build("web_alisher")
+	environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerHub')
+	}
 
-        /* Push the container to the custom Registry */
-        customImage.push()
-    }
+	stages {
+	    
+	    stage('gitclone') {
+
+			steps {
+				git 'https://github.com/aamerinov20/simple_nodejs.git'
+			}
+		}
+
+		stage('Build') {
+
+			steps {
+				sh 'docker build -t web_alisher:latest .'
+			}
+		}
+
+		stage('Login') {
+
+			steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			}
+		}
+
+		stage('Push') {
+
+			steps {
+				sh 'docker push web_alisher:latest'
+			}
+		}
+	}
+
+
 }

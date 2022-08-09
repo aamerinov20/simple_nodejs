@@ -1,6 +1,6 @@
 pipeline{
 
-	agent any
+	agent { docker 'ubuntu:latest' }
 
 	environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerHub')
@@ -11,7 +11,7 @@ pipeline{
 	    stage('gitclone') {
 
 			steps {
-				sh 'git clone https://github.com/aamerinov20/simple_nodejs.git'
+				git 'https://github.com/aamerinov20/simple_nodejs.git'
 			}
 		}
 

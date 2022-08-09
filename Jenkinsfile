@@ -4,8 +4,7 @@ pipeline {
     stages {
         stage('1-Build') {
             steps {
-                mkdir test_folderrrrr
-
+                docker build -t web_alisher .
             }
         }
         stage('2-Test') {

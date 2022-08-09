@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('1-Build') {
             steps {
-                docker build -t web_alisher .
+                git url: 'https://github.com/aamerinov20/simple_nodejs.git'
             }
         }
         stage('2-Test') {

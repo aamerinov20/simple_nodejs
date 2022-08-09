@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        DOCKERHUB_CREDENTIALS=credentials('dockerhub_cred')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub_cred')
+        REGISTRYHUB           = aamerinov20/web_alisher
     }
 
     stages {
@@ -13,7 +14,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build . -t aamerinov20/web_alisher'
+                sh 'docker build . -t $REGISTRYHUB'
             }
         }
         stage('Deploy container') {
@@ -24,7 +25,7 @@ pipeline {
         stage('Upload to DockerHub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push aamerinov20/web_alisher'
+                sh 'docker push $REGISTRYHUB'
                 sh 'docker logout'
 
             }

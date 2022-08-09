@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    environment {
+        DOCKERHUB_CREDENTIALS=credentials('dockerhub_cred')
+    }
+
     stages {
         stage('Clone Repo') {
             steps {
@@ -15,6 +19,12 @@ pipeline {
         stage('Deploy container') {
             steps {
                 sh 'docker-compose up -d'
+            }
+        }
+        stage('Upload to DockerHub') {
+            steps {
+                sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+                sh 'docker push web_alisher'
             }
         }
     }

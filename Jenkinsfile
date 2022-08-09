@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Build Image') {
             steps {
-                sh 'docker build . -t web_alisher'
+                sh 'docker build . -t aamerinov20/web_alisher'
             }
         }
         stage('Deploy container') {
@@ -24,7 +24,7 @@ pipeline {
         stage('Upload to DockerHub') {
             steps {
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push web_alisher'
+                sh 'docker push aamerinov20/web_alisher'
                 sh 'docker logout'
 
             }

@@ -2,7 +2,7 @@ var express = require('express');
 var app = express();
 
 app.get('/', function (req, res) {
-  res.send('the newest version!!!');
+  res.send('gooood');
 });
 
 app.listen(3000, function () {
